@@ -1,7 +1,7 @@
 require 'observer'
 
 class Player
-  attr_reader :money, :current_hand, :hands, :bet
+  attr_reader :balance, :current_hand, :hands, :bet
   attr_writer :hands
 
   extend Forwardable
@@ -9,7 +9,7 @@ class Player
   def_delegators :@current_hand, :count, :take_card_from_deck!
 
   def initialize(money)
-    @money = money
+    @balance = money
     @hands = []
   end
 
@@ -23,8 +23,8 @@ class Player
   end
 
   def bet!(bet)
-    if @money >= bet
-      @money -= bet
+    if @balance >= bet
+      @balance -= bet
       @bet = bet
     else
       raise "Not enough money."
@@ -36,10 +36,10 @@ class Player
   end
 
   def add_money!(m)
-    @money += m
+    @balance += m
   end
 
-  def double(bet)
+  def double!(bet)
     bet!(bet * 2)
   end
 end

@@ -1,12 +1,13 @@
 class Diller
   extend Forwardable
-  attr_reader :hand
+  attr_reader :hand, :balance
 
   MAX_NUM = 17
 
   def_delegators :@hand, :take_card!, :take_card_from_deck!, :count, :cards, :value
 
   def initialize
+    @balance = 0
   end
 
   def command(command)
@@ -15,6 +16,10 @@ class Diller
 
   def take_hand!(hand)
     @hand = hand
+  end
+
+  def add_money!(money)
+    @balance += money
   end
 
   def first_card
@@ -30,15 +35,3 @@ class Diller
   end
 end
 
-
-@diller = Diller.new
-@p = Player.new(1000, diller)
-@p.bet!(100)
-@p.deal!
-@diller.value
-@p.current_hand.value
-@p.hit!
-@p.current_hand.value
-@p.stand!
-@p.bet!(100)
-@p.deal!

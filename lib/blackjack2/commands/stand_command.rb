@@ -20,6 +20,7 @@ class StandCommand
     when :diller
       @diller.add_money!(@player.bet)
     when :push
+      @player.add_money!(@player.bet)
       :nothing
     end
   end

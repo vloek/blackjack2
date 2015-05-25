@@ -1,5 +1,4 @@
 class DealCommand
-
   def initialize(player, diller, deck)
     @player = player
     @diller = diller
