@@ -1,4 +1,9 @@
 class Deck
+  extend Forwardable
+
+  def_delegators :@cards, :count
+
+
   RANKS  = %w(2 3 4 5 6 7 8 9 10 J Q K A)
   SCORES = %w(2 3 4 5 6 7 8 9 10 10 10 10 11)
   SUITS  = [:spades, :clubs, :hearts, :diamonds]

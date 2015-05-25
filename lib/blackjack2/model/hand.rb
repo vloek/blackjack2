@@ -1,6 +1,8 @@
 class Hand
+  extend Forwardable
+
   attr_reader :cards
-  attr_writer :bet
+  def_delegators :@cards, :count
 
   def initialize(cards=[])
     @cards = cards
@@ -14,8 +16,12 @@ class Hand
     take_card!(deck.next_card!)
   end
 
+  def split
+    @cards.each_slice(1).to_a
+  end
+
   def take_card!(card)
-    self << card
+    @cards << card
     card
   end
 end

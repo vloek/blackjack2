@@ -1,39 +1,42 @@
 require 'observer'
 
 class Player
-  include Observable
+  attr_reader :money, :current_hand, :hands, :bet
+  attr_writer :hands
 
-  attr_reader :money
+  extend Forwardable
+
+  def_delegators :@current_hand, :count, :take_card_from_deck!
 
   def initialize(money)
     @money = money
+    @hands = []
   end
 
-  def take_hand(hand)
+  def take_hand!(hand)
     @current_hand = hand 
   end
 
-  def hit!
-    notify_observers(:hit, @current_hand)
-  end
-
-  def stand!
-    notify_observers(:stand, @current_hand)
-  end
-
-  def split!
-    notify_observers(:split, @current_hand)
-    @current_hand = nil
+  def flush!
+    @hands = []
+    @current_hand = Hand.new
   end
 
   def bet!(bet)
     if @money >= bet
       @money -= bet
-      @bet = bet 
-      @bet
+      @bet = bet
     else
       raise "Not enough money."
     end
+  end
+
+  def reset_bet!
+    @bet = nil
+  end
+
+  def add_money!(m)
+    @money += m
   end
 
   def double(bet)
