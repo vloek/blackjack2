@@ -11,6 +11,7 @@ class Player
   def initialize(money)
     @balance = money
     @hands = []
+    @bet = nil
   end
 
   def take_hand!(hand)
@@ -23,7 +24,7 @@ class Player
   end
 
   def bet!(bet)
-    if @balance >= bet && @bet != nil
+    if @balance >= bet && @bet == nil
       @balance -= bet
       @bet = bet
     else
