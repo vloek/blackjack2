@@ -18,11 +18,14 @@ class StandCommand
     case who_won
     when :player
       @player.add_money!(@player.bet * 2)
+      @player.reset_bet!
     when :diller
       @diller.add_money!(@player.bet)
+      @player.reset_bet!
     when :push
       @player.add_money!(@player.bet)
-      :nothing
+      @player.reset_bet!
+      :push
     end
   end
 end
