@@ -9,7 +9,20 @@ class Hand
   end
 
   def value
-    @cards.inject(0) { |sum, card| sum += card.value }
+    aced = 0
+    val = @cards.inject(0) do |sum, card|
+      sum += card.value
+      aced += 1 if card.rank == "A"
+    end
+
+    # FIX THIS
+    if val > 21 && aced == 1
+      val -= 10
+    elsif val > 21 && aced > 1
+      aced.times { val -= 10 }
+    end
+
+    val
   end
 
   def take_card_from_deck!(deck)
