@@ -5,6 +5,6 @@ class SplitCommand
 
   def execute
     @player.hands = @player.current_hand.split
-    @player.take_hand!(@player.hands.first)
+    @player.take_hand!(@player.hands.first) if @player.hands.count == 2
   end
 end
