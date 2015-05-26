@@ -27,7 +27,8 @@ class Hand
   end
 
   def split
-    @cards.each_slice(1).to_a if @cards.count == 2 && all_value_eq?(@cards)
+    return @cards.each_slice(1).to_a.map { |card| Hand.new([card]) } if @cards.count == 2 && all_value_eq?(@cards)
+    nil
   end
 
   def take_card!(card)

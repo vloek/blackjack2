@@ -41,15 +41,13 @@ RSpec.describe Hand do
     expect(hand.value).to eq(20)
   end
 
-
-
-  it 'should split if 2 pic card' do
+  it 'should split if 2 value equals card' do
     hand = Hand.new [Card.new(suit: :diamonds, rank: "K"), Card.new(suit: :clubs, rank: "Q")]
     hands =  hand.split
     expect(hands.count).to eq(2)
   end
 
-  it 'should not split if not 2 pic card' do
+  it 'should not split if not 2 equals card' do
     hand = Hand.new [Card.new(suit: :diamonds, rank: "K"), Card.new(suit: :clubs, rank: "5")]
     hands =  hand.split
     expect(hands).to eq(nil)
