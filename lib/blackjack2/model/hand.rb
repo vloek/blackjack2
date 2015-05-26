@@ -17,10 +17,14 @@ class Hand
   end
 
   def split
-    @cards.each_slice(1).to_a
+    @cards.each_slice(1).to_a if @cards.count == 2 && all_value_eq?(@cards)
   end
 
   def take_card!(card)
     @cards << card if card.instance_of?(Card)
+  end
+
+  def all_value_eq?(cards)
+    cards.map { |card| card.value }.uniq.count == 1
   end
 end
