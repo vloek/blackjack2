@@ -31,7 +31,7 @@ class Diller
   end
 
   def take_to_self_from!(deck)
-    take_card_from_deck!(deck) while value < MAX_NUM
+    take_card_from_deck!(deck) while value < MAX_NUM && deck.count != 0
   end
 end
 
