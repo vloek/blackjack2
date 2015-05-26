@@ -50,7 +50,7 @@ RSpec.describe Hand do
   it 'should not split if not 2 equals card' do
     hand = Hand.new [Card.new(suit: :diamonds, rank: "K"), Card.new(suit: :clubs, rank: "5")]
     hands =  hand.split
-    expect(hands).to eq(nil)
+    expect(hands).to eq([])
   end
 
 
