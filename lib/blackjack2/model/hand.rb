@@ -1,7 +1,8 @@
 class Hand
   extend Forwardable
 
-  attr_reader :cards
+  attr_reader :cards, :status
+  attr_writer :status
   def_delegators :@cards, :count
 
   def initialize(cards=[])
