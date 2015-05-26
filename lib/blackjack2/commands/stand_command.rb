@@ -11,6 +11,7 @@ class StandCommand
     @diller.take_to_self_from!(@deck)
     who_won = check_winner(@player.current_hand, @diller.hand)
     change_balance_winner(who_won)
+    who_won
   end
 
   def change_balance_winner(who_won)
