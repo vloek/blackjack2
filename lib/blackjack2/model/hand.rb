@@ -10,19 +10,16 @@ class Hand
 
   def value
     aced = 0
-    val = @cards.inject(0) do |sum, card|
-      sum += card.value
-      aced += 1 if card.rank == "A"
+    sum = 0
+
+    @cards.each do |card|
+      sum  += card.value.to_i
+      aced += 1 if card.rank == 'A'
     end
 
-    # FIX THIS
-    if val > 21 && aced == 1
-      val -= 10
-    elsif val > 21 && aced > 1
-      aced.times { val -= 10 }
-    end
+    ((sum -= 10) && (aced -= 1)) while(sum > 21 && aced >= 0)
 
-    val
+    sum
   end
 
   def take_card_from_deck!(deck)
