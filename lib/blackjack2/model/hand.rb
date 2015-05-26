@@ -21,7 +21,6 @@ class Hand
   end
 
   def take_card!(card)
-    @cards << card
-    card
+    @cards << card if card.instance_of?(Card)
   end
 end
