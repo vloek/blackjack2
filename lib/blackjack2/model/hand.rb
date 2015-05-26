@@ -17,7 +17,7 @@ class Hand
       aced += 1 if card.rank == 'A'
     end
 
-    ((sum -= 10) && (aced -= 1)) while(sum > 21 && aced >= 0)
+    ((sum -= 10) && (aced -= 1)) while(sum > 21 && aced > 0)
 
     sum
   end
