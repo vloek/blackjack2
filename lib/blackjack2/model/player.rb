@@ -24,11 +24,11 @@ class Player
   end
 
   def bet!(bet)
-    if @balance >= bet && @bet == nil
+    if @balance >= bet 
       @balance -= bet
       @bet = bet
     else
-      raise "Not enough money or bet present."
+      raise "Not enough money."
     end
   end
 
