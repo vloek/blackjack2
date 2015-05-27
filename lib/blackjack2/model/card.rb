@@ -16,7 +16,7 @@ class Card
   end
 
   def to_s
-    "#{@suit.to_s.capitalize}_#{@rank}"
+    "#{@suit.to_s}_#{@rank}"
   end
 
   def score_by_rank(rank)
