@@ -13,7 +13,7 @@ class StandCommand
       who_won = check_winner(@player.current_hand, @diller.hand)
       change_balance_winner(who_won)
       # @player.take_hand!(@player.hands.pop) if @player.hands.count != 0
-      @diller.hand.status = :stand
+      # @diller.hand.status = :stand
       who_won
     end
   end
